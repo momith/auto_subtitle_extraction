@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  subtitle-extractor:
+    build: .
+    container_name: subtitle-extractor
+    restart: always
+    environment:
+      - WATCH_FOLDER=/data
+      - CHECK_INTERVAL=30
+    volumes:
+      - /media/mo/myssd/mymovies:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
